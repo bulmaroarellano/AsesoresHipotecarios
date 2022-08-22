@@ -1,0 +1,44 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                <a href="{{ route('transactions.index') }}" class="mr-4"
+                    ><i class="icon ion-md-arrow-back"></i
+                ></a>
+                @lang('crud.transactions.create_title')
+            </h4>
+
+            <x-form
+                method="POST"
+                action="{{ route('transactions.store') }}"
+                class="mt-4 needs-validation">
+
+                    @include('app.applicants.form-inputs')
+                    @include('app.orders.form-inputs')
+                    @include('app.transactions.form-inputs')
+
+                <div class="mt-4">
+                    <a
+                        href="{{ route('transactions.index') }}"
+                        class="btn btn-light"
+                    >
+                        <i class="icon ion-md-return-left text-primary"></i>
+                        @lang('crud.common.back')
+                    </a>
+
+                    <button type="submit" class="btn btn-primary float-right">
+                        <i class="icon ion-md-save"></i>
+                        @lang('crud.common.create')
+                    </button>
+                </div>
+            </x-form>
+        </div>
+    </div>
+</div>
+@endsection
+@push('scripts')
+<script type="text/javascript" src="/js/validate.js"></script>
+@endpush
